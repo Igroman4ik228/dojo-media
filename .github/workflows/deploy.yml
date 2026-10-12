@@ -33,7 +33,7 @@ jobs:
         run: npm ci
 
       - name: Check types
-        run: npm run lint:type:fix
+        run: npm run lint:type
 
       - name: Build site
         run: npm run build
