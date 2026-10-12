@@ -1,0 +1,21 @@
+.contactLink {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 48px;
+	padding: 14px 20px;
+	background: var(--color-accent);
+	color: #fff;
+	font-size: var(--font-size-small);
+	line-height: 20px;
+	text-align: center;
+}
+
+.contactLink:hover {
+	background: var(--color-text);
+}
+
+.contactLink::after {
+	content: ' →' / '';
+	white-space: pre;
+}

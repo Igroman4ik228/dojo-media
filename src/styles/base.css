@@ -1,0 +1,93 @@
+:root {
+	--color-background: #f1ede2;
+	--color-text: #211b18;
+	--color-text-muted: #655b54;
+	--color-border: #c7beb2;
+	--color-accent: #302038;
+	--color-background-hover: #e9e3d6;
+	--font-body: 'Manrope', sans-serif;
+	--font-heading: 'Oranienbaum', serif;
+	--font-size-small: 14px;
+	--text-small: 400 var(--font-size-small) / 22px var(--font-body);
+	--text-label: 400 12px / 18px var(--font-body);
+	--label-letter-spacing: 1px;
+
+	font-family: var(--font-body);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 26px;
+	color: var(--color-text);
+	background: var(--color-background);
+	font-synthesis: none;
+	scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-heading);
+	font-weight: 400;
+}
+
+h1 {
+	font-size: 72px;
+	line-height: 76px;
+
+	@media (width < 768px) {
+		font-size: 44px;
+		line-height: 48px;
+	}
+}
+
+h2 {
+	font-size: 48px;
+	line-height: 52px;
+
+	@media (width < 768px) {
+		font-size: 32px;
+		line-height: 36px;
+	}
+}
+
+h3 {
+	font-size: 28px;
+	line-height: 32px;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+:focus-visible,
+button:focus-visible,
+input:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 3px;
+}
+
+button,
+a,
+input {
+	-webkit-tap-highlight-color: transparent;
+}
+
+button {
+	transition:
+		color 0.3s ease,
+		background-color 0.3s ease,
+		border-color 0.3s ease;
+
+	&:disabled {
+		cursor: not-allowed;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation: none !important;
+		transition: none !important;
+		scroll-behavior: auto !important;
+	}
+}

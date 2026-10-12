@@ -1,46 +1,55 @@
-# Astro Starter Kit: Basics
+# Додзё Медиа
+
+![Preview](docs/images/preview.png)
+
+**Стек:** Astro · TypeScript · CSS Modules
+
+## Быстрый старт
+
+Обязательно необходимо Node.js ≥ 22 и npm
+
+В корне проекта выполните:
 
 ```sh
-npm create astro@latest -- --template basics
+npm i
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Для просмотра результата сборки:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+npm run build
+npm run preview
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Команды
 
-## 🧞 Commands
+| Команда              | Что делает                                  |
+| -------------------- | ------------------------------------------- |
+| `npm run dev`        | Запускает сервер разработки                 |
+| `npm run lint:type`  | Проверяет Astro-файлы и типы                |
+| `npm run build`      | Собирает статический сайт в `dist/`         |
+| `npm run preview`    | Запускает локальный просмотр готовой сборки |
+| `npm run format`     | Проверяет форматирование Prettier           |
+| `npm run format:fix` | Исправляет форматирование Prettier          |
 
-All commands are run from the root of the project, from a terminal:
+## Где вносить изменения перед публикацией
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Пути от корня проекта:
 
-## 👀 Want to learn more?
+| Где                                                  | Что изменить                                                                                                                                                            |
+| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `astro.config.mjs`                                   | Домен `site` и путь `base` (`'/'` для корня домена).                                                                                                                    |
+| `src/layouts/MainLayout/MainLayout.astro`            | `title`, `description`, `og:site_name`, `socialImage`, `socialImageAlt`, `apple-mobile-web-app-title` и `theme-color`. Превью и первый экран используют `workshop.png`. |
+| `public/favicon/`, `public/favicon/site.webmanifest` | Иконки, названия и цвета приложения.                                                                                                                                    |
+| `public/robots.txt`, метатег `robots` в layout       | Разрешения на обход и индексацию.                                                                                                                                       |
+| `.github/workflows/deploy.yml`                       | Ветки публикации; замените `npm run lint:type:fix` на существующий `npm run lint:type`.                                                                                 |
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Пути компонентов указаны относительно `src/components/`.
+
+| Где                                                                 | Что изменить                                                                                  |
+| ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `ContactLink/ContactLink.astro`                                     | Ссылку `href={'#'}` у кнопки «Обсудить проект» на контактную.                                 |
+| `Footer/Footer.astro`                                               | Email в ссылке и тексте, год и подпись.                                                       |
+| `Projects/Projects.ts`                                              | Названия, ссылки вместо `#`, теги, изображения и `alt`; изображения — в `src/assets/images/`. |
+| `Header/Header.astro`, `Hero/Hero.astro`, `Projects/Projects.astro` | Название, тексты, город и подпись с числом проектов.                                          |

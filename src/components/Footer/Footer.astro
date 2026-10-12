@@ -1,0 +1,23 @@
+---
+import styles from './Footer.module.css';
+import ContactLink from '../ContactLink/ContactLink.astro';
+---
+
+<footer class={styles.footer} id='contacts'>
+	<section class={styles.contact} aria-labelledby='contact-title'>
+		<div class={styles.copy}>
+			<h2 id='contact-title'>Начнём с вашей идеи.</h2>
+
+			<address class={styles.email}>
+				<a href='mailto:hello@dojo-media.com'>hello@dojo-media.com</a>
+			</address>
+		</div>
+
+		<ContactLink />
+	</section>
+
+	<div class={styles.bottom}>
+		<p>© 2026 Додзё Медиа</p>
+		<p>Мастерство начинается с деталей.</p>
+	</div>
+</footer>

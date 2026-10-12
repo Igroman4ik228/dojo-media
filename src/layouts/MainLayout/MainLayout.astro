@@ -1,0 +1,135 @@
+---
+import '../../styles/reset.css';
+import '../../styles/fonts.css';
+import '../../styles/base.css';
+import { getImage } from 'astro:assets';
+import workshop from '../../assets/images/workshop.png';
+import oranienbaumFontUrl from '../../assets/fonts/oranienbaum-regular.woff2?url';
+import manropeFontUrl from '../../assets/fonts/manrope-regular.woff2?url';
+
+import styles from './MainLayout.module.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Додзё Медиа — Цифровое ремесло. Измеримый результат.',
+	description = 'Додзё Медиа — цифровое ремесло и измеримый результат. Собираем сайты, поиск и рекламу в единую систему. Из Ярославля — в любую точку мира.',
+} = Astro.props;
+
+const canonicalUrl = Astro.site
+	? new URL(Astro.url.pathname, Astro.site)
+	: undefined;
+
+const baseUrl = import.meta.env.BASE_URL;
+const sitemapUrl = Astro.site
+	? new URL(`${baseUrl}sitemap-index.xml`, Astro.site)
+	: undefined;
+
+const socialImage = await getImage({
+	src: workshop,
+	width: 1200,
+	format: 'jpeg',
+	quality: 85,
+});
+const socialImageUrl = Astro.site
+	? new URL(socialImage.src, Astro.site)
+	: undefined;
+
+const socialImageAlt =
+	'Додзё Медиа — команда мастеров за общим столом с ноутбуками, книгами и планшетами';
+---
+
+<!doctype html>
+<html lang='ru'>
+	<head>
+		<meta charset='utf-8' />
+		<meta name='viewport' content='width=device-width, initial-scale=1' />
+		<title>{title}</title>
+
+		<!-- SEO -->
+		<meta name='description' content={description} />
+		<meta name='robots' content='index, follow, max-image-preview:large' />
+		<meta name='theme-color' content='#F1EDE2' />
+		{canonicalUrl && <link rel='canonical' href={canonicalUrl} />}
+		{sitemapUrl && <link rel='sitemap' href={sitemapUrl} />}
+
+		<!-- Open Graph -->
+		<meta property='og:type' content='website' />
+		<meta property='og:locale' content='ru_RU' />
+		<meta property='og:site_name' content='Додзё Медиа' />
+		<meta property='og:title' content={title} />
+		<meta property='og:description' content={description} />
+		{canonicalUrl && <meta property='og:url' content={canonicalUrl.href} />}
+		{socialImageUrl && (
+			<>
+				<meta property='og:image' content={socialImageUrl.href} />
+				<meta property='og:image:type' content='image/jpeg' />
+				<meta
+					property='og:image:width'
+					content={socialImage.attributes.width}
+				/>
+				<meta
+					property='og:image:height'
+					content={socialImage.attributes.height}
+				/>
+				<meta property='og:image:alt' content={socialImageAlt} />
+			</>
+		)}
+
+		<!-- Twitter -->
+		<meta name='twitter:card' content='summary_large_image' />
+		<meta name='twitter:title' content={title} />
+		<meta name='twitter:description' content={description} />
+		{socialImageUrl && (
+			<>
+				<meta name='twitter:image' content={socialImageUrl.href} />
+				<meta name='twitter:image:alt' content={socialImageAlt} />
+			</>
+		)}
+
+		<!-- Favicon -->
+		<link
+			rel='icon'
+			type='image/png'
+			href={`${baseUrl}favicon/favicon-96x96.png`}
+			sizes='96x96'
+		/>
+		<link
+			rel='icon'
+			type='image/svg+xml'
+			href={`${baseUrl}favicon/favicon.svg`}
+		/>
+		<link rel='shortcut icon' href={`${baseUrl}favicon/favicon.ico`} />
+		<link
+			rel='apple-touch-icon'
+			sizes='180x180'
+			href={`${baseUrl}favicon/apple-touch-icon.png`}
+		/>
+		<meta name='apple-mobile-web-app-title' content='Dojo Media' />
+		<link rel='manifest' href={`${baseUrl}favicon/site.webmanifest`} />
+
+		<!-- Fonts -->
+		<link
+			rel='preload'
+			href={oranienbaumFontUrl}
+			as='font'
+			type='font/woff2'
+			crossorigin
+		/>
+		<link
+			rel='preload'
+			href={manropeFontUrl}
+			as='font'
+			type='font/woff2'
+			crossorigin
+		/>
+	</head>
+	<body>
+		<div class={styles.container}>
+			<slot />
+		</div>
+	</body>
+</html>

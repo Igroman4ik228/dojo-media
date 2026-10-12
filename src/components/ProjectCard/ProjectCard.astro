@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets';
+
+import styles from './ProjectCard.module.css';
+import type { ProjectCardProps } from './ProjectCard.types';
+
+type Props = ProjectCardProps;
+
+const { title, href, tags, image, alt } = Astro.props;
+
+const imageSizes = [
+	// One column: 40px page margins, 32px card padding.
+	'(width < 768px) calc(100vw - 40px - 32px)',
+	// Two columns: 80px page margins, one 24px gap, 32px padding per card.
+	'(width < 1024px) calc((100vw - 80px - 24px) / 2 - 32px)',
+	// Three columns: 80px page margins, two 24px gaps, 32px padding per card.
+	'(width < 1280px) calc((100vw - 80px - 48px) / 3 - 32px)',
+	// Maximum card width: 384px minus 32px padding.
+	'352px',
+].join(', ');
+---
+
+<article aria-label={title}>
+	<a
+		data-project-card
+		class={styles.card}
+		href={href}
+		aria-label={`Смотреть проект «${title}»: изображение`}
+	>
+		<Image
+			class={styles.image}
+			src={image}
+			alt={alt}
+			width='352'
+			height='220'
+			widths={[320, 480, 704, 1056, 1408]}
+			sizes={imageSizes}
+			format='webp'
+			quality={80}
+			loading='lazy'
+		/>
+
+		<h3 class={styles.title}>{title}</h3>
+
+		<ul class={styles.tags} aria-label='Услуги проекта'>
+			{tags.map((tag: string) => (
+				<li>{tag}</li>
+			))}
+		</ul>
+
+		<span class={styles.link}>Смотреть проект</span>
+	</a>
+</article>

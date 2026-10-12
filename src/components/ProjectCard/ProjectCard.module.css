@@ -1,0 +1,43 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	min-width: 0;
+	padding: 16px;
+	box-shadow: inset 0 0 0 1px var(--color-border);
+	font: var(--text-small);
+}
+
+.card:hover {
+	background: var(--color-background-hover);
+}
+
+.image {
+	width: 100%;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+}
+
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	color: var(--color-text-muted);
+}
+
+.title {
+	text-transform: uppercase;
+}
+
+.tags li {
+	text-transform: capitalize;
+}
+
+.tags li + li::before {
+	content: ' · ' / '';
+	white-space: pre;
+}
+
+.link::after {
+	content: ' →' / '';
+	white-space: pre;
+}

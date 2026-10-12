@@ -1,0 +1,27 @@
+@font-face {
+	font-family: 'Oranienbaum';
+	src:
+		local('oranienbaum'),
+		local('Oranienbaum'),
+		local('oranienbaum-regular'),
+		local('Oranienbaum-Regular'),
+		url('../assets/fonts/oranienbaum-regular.woff2') format('woff2'),
+		url('../assets/fonts/oranienbaum-regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Manrope';
+	src:
+		local('manrope regular'),
+		local('Manrope Regular'),
+		local('manrope-regular'),
+		local('Manrope-Regular'),
+		url('../assets/fonts/manrope-regular.woff2') format('woff2'),
+		url('../assets/fonts/manrope-regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}

@@ -1,0 +1,55 @@
+.footer {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	padding-block: 40px 24px;
+	box-shadow: inset 0 1px var(--color-border);
+
+	@media (width < 768px) {
+		padding-block: 32px 24px;
+		gap: 24px;
+	}
+}
+
+.contact {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+
+	@media (width < 768px) {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0;
+	}
+}
+
+.copy {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.email {
+	align-self: flex-start;
+}
+
+.email,
+.bottom {
+	font: var(--text-small);
+	color: var(--color-text-muted);
+}
+
+.email a:hover {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.bottom {
+	display: flex;
+	justify-content: space-between;
+
+	@media (width < 768px) {
+		flex-direction: column;
+	}
+}

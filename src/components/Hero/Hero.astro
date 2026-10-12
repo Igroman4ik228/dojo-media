@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import workshop from '../../assets/images/workshop.png';
+
+import styles from './Hero.module.css';
+
+const imageSizes = [
+	// Mobile: 20px page margins; 1.5 accounts for the image's cover crop.
+	'(width < 768px) calc((100vw - 40px) * 1.5)',
+	// Below the container limit: 40px page margins.
+	'(width < 1280px) calc(100vw - 80px)',
+	// Maximum container width.
+	'1200px',
+].join(', ');
+---
+
+<div class={styles.hero}>
+	<ul class={styles.eyebrow} aria-label='Направления работы'>
+		<li>сайты</li>
+		<li>поиск</li>
+		<li>смысл</li>
+	</ul>
+
+	<div class={styles.intro}>
+		<h1 class={styles.title} id='hero-title'>
+			<span>Цифровое ремесло.</span>
+			<span>Измеримый результат.</span>
+		</h1>
+
+		<div class={styles.description}>
+			<p class={styles.lead} data-hero-lead>
+				Собираем сайты, поиск и рекламу в единую систему. Помогаем амбициозным
+				брендам расти.
+			</p>
+
+			<p class={styles.location}>из ярославля — в любую точку мира</p>
+		</div>
+	</div>
+
+	<Image
+		class={styles.workshop}
+		src={workshop}
+		width={1200}
+		widths={[400, 720, 1080, 1200, 1800, 2252]}
+		sizes={imageSizes}
+		format='webp'
+		quality={80}
+		alt='Команда мастеров за общим столом с ноутбуками, книгами и планшетами'
+		fetchpriority='high'
+		loading='eager'
+	/>
+</div>

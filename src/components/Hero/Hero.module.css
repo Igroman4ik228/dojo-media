@@ -1,0 +1,86 @@
+.hero {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	padding-block: 56px 64px;
+
+	@media (width < 768px) {
+		gap: 20px;
+		padding-block: 32px 40px;
+	}
+}
+
+.intro {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	align-items: end;
+	gap: 40px;
+
+	@media (768px <= width < 1200px) {
+		grid-template-columns: 1fr;
+		gap: 24px;
+	}
+
+	@media (width < 768px) {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 20px;
+	}
+}
+
+.title {
+	@media (768px <= width < 1200px) {
+		font-size: clamp(52px, 5vw, 72px);
+		line-height: 1.06;
+	}
+}
+
+.title span {
+	display: block;
+}
+
+.description {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+
+	@media (768px <= width < 1200px) {
+		max-width: 560px;
+	}
+}
+
+.lead {
+	color: var(--color-text-muted);
+}
+
+.eyebrow,
+.location {
+	display: flex;
+	flex-wrap: wrap;
+	font: var(--text-label);
+	letter-spacing: var(--label-letter-spacing);
+	color: var(--color-text-muted);
+	text-transform: uppercase;
+}
+
+.eyebrow li + li::before {
+	content: ' · ' / '';
+	white-space: pre;
+}
+
+.workshop {
+	width: 100%;
+	aspect-ratio: 3 / 1;
+	object-fit: cover;
+	outline: 1px solid rgb(106 92 82 / 55%);
+	outline-offset: -1px;
+
+	@media (768px <= width < 1200px) {
+		aspect-ratio: 5 / 2;
+	}
+
+	@media (width < 768px) {
+		aspect-ratio: 5 / 3;
+	}
+}

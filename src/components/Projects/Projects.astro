@@ -1,0 +1,20 @@
+---
+import styles from './Projects.module.css';
+import ProjectCard from '../ProjectCard/ProjectCard.astro';
+import { projects } from './Projects';
+---
+
+<div class={styles.projects}>
+	<div class={styles.heading}>
+		<h2 id='projects-title'>Избранные работы</h2>
+		<p class={styles.eyebrow}>три проекта. три истории.</p>
+	</div>
+
+	<ul class={styles.grid} aria-label='Проекты'>
+		{projects.map((project) => (
+			<li>
+				<ProjectCard {...project} />
+			</li>
+		))}
+	</ul>
+</div>

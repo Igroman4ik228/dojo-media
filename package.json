@@ -1,17 +1,27 @@
 {
-  "name": "",
-  "type": "module",
-  "version": "0.0.1",
-  "engines": {
-    "node": ">=22.12.0"
-  },
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "astro": "^7.3.8"
-  }
+	"name": "dojo-media",
+	"type": "module",
+	"version": "0.0.1",
+	"engines": {
+		"node": ">=22.12.0"
+	},
+	"scripts": {
+		"astro": "astro",
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"lint:type": "astro check",
+		"format": "prettier . -c -u --cache",
+		"format:fix": "prettier . -w -u --cache"
+	},
+	"dependencies": {
+		"@astrojs/sitemap": "^3.7.4",
+		"astro": "^7.3.8",
+		"typescript": "^6.0.3"
+	},
+	"devDependencies": {
+		"@astrojs/check": "^0.9.10",
+		"prettier": "^3.9.10",
+		"prettier-plugin-astro": "^1.1.1"
+	}
 }
